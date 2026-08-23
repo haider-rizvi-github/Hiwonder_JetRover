@@ -79,7 +79,7 @@ def generate_launch_description():
         parameters=[
             {
                 "robot_description": robot_description,
-                "use_sim_time": True,
+                "use_sim_time": False,
             }
         ],
     )
@@ -104,7 +104,7 @@ def generate_launch_description():
         executable="rviz2",
         name="rviz2",
         output="screen",
-        arguments=["-d", rviz_config],
+        #arguments=["-d", rviz_config],
     )
 
     # Order matters: environment variables must be set before Xacro runs
