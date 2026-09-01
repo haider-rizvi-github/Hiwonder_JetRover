@@ -54,11 +54,11 @@
       </geometry>
     </collision>
   </link>
-  <joint name="wheel_left_front_joint" type="fixed">
+  <joint name="wheel_left_front_joint" type="continuous">
     <origin xyz="0.0975130769499663 0.11212949984639 -0.0678410821576751" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="wheel_left_front_link" />
-    <axis xyz="0 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
   <link name="wheel_left_back_link">
     <inertial>
@@ -83,11 +83,11 @@
       </geometry>
     </collision>
   </link>
-  <joint name="wheel_left_back_joint" type="fixed">
+  <joint name="wheel_left_back_joint" type="continuous">
     <origin xyz="-0.0975130776687404 0.112129499199832 -0.0678410821576746" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="wheel_left_back_link" />
-    <axis xyz="0 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
   <link name="wheel_right_front_link">
     <inertial>
@@ -112,11 +112,11 @@
       </geometry>
     </collision>
   </link>
-  <joint name="wheel_right_front_joint" type="fixed">
+  <joint name="wheel_right_front_joint" type="continuous">
     <origin xyz="0.0975130776687398 -0.112129499199832 -0.0678410821576747" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="wheel_right_front_link" />
-    <axis xyz="0 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
   <link name="wheel_right_back_link">
     <inertial>
@@ -141,11 +141,11 @@
       </geometry>
     </collision>
   </link>
-  <joint name="wheel_right_back_joint" type="fixed">
+  <joint name="wheel_right_back_joint" type="continuous">
     <origin xyz="-0.097513076949967 -0.11212949984639 -0.0678410821576744" rpy="0 0 0" />
     <parent link="base_link" />
     <child link="wheel_right_back_link" />
-    <axis xyz="0 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
 
 </robot>

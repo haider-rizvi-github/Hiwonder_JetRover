@@ -87,11 +87,19 @@
       </geometry>
     </collision>
   </link>
-  <joint name="wheel_left_front_joint" type="fixed">
+  <link name="steer_left_front_link"/>
+  <joint name="steer_left_front_joint" type="revolute">
     <origin xyz="-0.106579884267788 -0.0916974467397005 -0.0654867643253843" rpy="0 0 3.14159265358979" />
     <parent link="base_link" />
+    <child link="steer_left_front_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.6" upper="0.6" effort="10" velocity="2" />
+  </joint>
+  <joint name="wheel_left_front_joint" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="steer_left_front_link" />
     <child link="wheel_left_front_link" />
-    <axis xyz="0 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
   <link name="wheel_left_back_link">
     <inertial>
@@ -116,11 +124,11 @@
       </geometry>
     </collision>
   </link>
-  <joint name="wheel_left_back_joint" type="fixed">
+  <joint name="wheel_left_back_joint" type="continuous">
     <origin xyz="0.106753653016542 -0.0920004072996187 -0.0658214520621466" rpy="0 0 3.14158803228829" />
     <parent link="base_link" />
     <child link="wheel_left_back_link" />
-    <axis xyz="0 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
   <link name="wheel_right_front_link">
     <inertial>
@@ -145,11 +153,19 @@
       </geometry>
     </collision>
   </link>
-  <joint name="wheel_right_front_joint" type="fixed">
+  <link name="steer_right_front_link"/>
+  <joint name="steer_right_front_joint" type="revolute">
     <origin xyz="-0.10658 0.091851 -0.065487" rpy="0 0 3.1416" />
     <parent link="base_link" />
+    <child link="steer_right_front_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.6" upper="0.6" effort="10" velocity="2" />
+  </joint>
+  <joint name="wheel_right_front_joint" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="steer_right_front_link" />
     <child link="wheel_right_front_link" />
-    <axis xyz="0 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
   <link name="wheel_right_back_link">
     <inertial>
@@ -174,11 +190,10 @@
       </geometry>
     </collision>
   </link>
-  <joint name="wheel_right_back_joint" type="fixed">
+  <joint name="wheel_right_back_joint" type="continuous">
     <origin xyz="0.10675 0.091848 -0.065821" rpy="0 0 3.1416" />
     <parent link="base_link" />
     <child link="wheel_right_back_link" />
-    <axis xyz="0 0 0" />
+    <axis xyz="0 1 0" />
   </joint>
 </robot>
-
