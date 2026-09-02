@@ -2,53 +2,106 @@
 
 <robot name="hiwonder" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- Friction for the four Mecanum wheels -->
+  <!-- Reusable Gazebo contact-friction settings -->
+  <xacro:macro name="contact_friction" params="link_name mu_value">
+    <gazebo reference="${link_name}">
+      <mu1>${mu_value}</mu1>
+      <mu2>${mu_value}</mu2>
+      <kp>1000000.0</kp>
+      <kd>100.0</kd>
+      <minDepth>0.001</minDepth>
+      <maxVel>0.1</maxVel>
+    </gazebo>
+  </xacro:macro>
 
-  <gazebo reference="wheel_left_front_link">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-  </gazebo>
+  <!-- Mecanum wheels -->
+  <xacro:contact_friction
+      link_name="wheel_left_front_link"
+      mu_value="1.0"/>
 
-  <gazebo reference="wheel_left_back_link">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-  </gazebo>
+  <xacro:contact_friction
+      link_name="wheel_left_back_link"
+      mu_value="1.0"/>
 
-  <gazebo reference="wheel_right_front_link">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-  </gazebo>
+  <xacro:contact_friction
+      link_name="wheel_right_front_link"
+      mu_value="1.0"/>
 
-  <gazebo reference="wheel_right_back_link">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-  </gazebo>
+  <xacro:contact_friction
+      link_name="wheel_right_back_link"
+      mu_value="1.0"/>
 
-  <!-- ROS 2 Control plugin for Gazebo Harmonic -->
+  <!-- Arm links -->
+  <xacro:contact_friction
+    link_name="link1"
+    mu_value="1.0"/>
 
-  <gazebo>
-    <plugin
-      filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+  <xacro:contact_friction 
+    link_name="servo_link1" 
+    mu_value="1.0"/>
+  
+  <xacro:contact_friction
+    link_name="link2"
+    mu_value="1.0"/>
+  
+  <xacro:contact_friction
+    link_name="link3" 
+    mu_value="1.0"/>
 
-      <parameters> $(find jetrover_description)/config/controllers.yaml </parameters>
+  <xacro:contact_friction
+    link_name="link4" 
+    mu_value="1.0"/>
 
-    </plugin>
-  </gazebo>
+  <xacro:contact_friction 
+    link_name="servo_link2"
+    mu_value="1.0"/>
+
+  <xacro:contact_friction
+    link_name="link5"
+    mu_value="1.0"/>
+  
+  <xacro:contact_friction
+    link_name="gripper_link" 
+    mu_value="1.0"/>
+
+  <!-- Gripper links -->
+  <xacro:contact_friction
+    link_name="r_link"
+    mu_value="1.0"/>
+
+  <xacro:contact_friction
+    link_name="r_in_link" 
+    mu_value="1.0"/>
+
+  <xacro:contact_friction 
+    link_name="r_out_link" 
+    mu_value="1.0"/>
+
+  <xacro:contact_friction 
+    link_name="l_link" 
+    mu_value="1.0"/>
+
+  <xacro:contact_friction 
+    link_name="l_in_link" 
+    mu_value="1.0"/>
+
+  <xacro:contact_friction 
+    link_name="l_out_link" 
+    mu_value="1.0"/>
+
+  <!-- Enable ROS 2 Control later -->
+  <xacro:if value="$(arg enable_ros2_control)">
+    <gazebo>
+      <plugin
+        filename="libgz_ros2_control-system.so"
+        name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+
+        <parameters>
+          $(find jetrover_description)/config/controllers.yaml
+        </parameters>
+
+      </plugin>
+    </gazebo>
+  </xacro:if>
 
 </robot>

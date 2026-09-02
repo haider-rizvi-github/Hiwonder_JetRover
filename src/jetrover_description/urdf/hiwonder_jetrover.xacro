@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="hiwonder" xmlns:xacro="http://ros.org/wiki/xacro">
 
-    
+    <!-- change default to True to enable ROS2 control : Using it false to check if gazebo is working correctly -->
+    <xacro:arg name="enable_ros2_control" default="false"/>
 
     <xacro:property name="lidar"        value="$(env LIDAR_TYPE)"/>
     <xacro:property name="machine"      value="$(env MACHINE_TYPE)"/>
@@ -39,7 +40,9 @@
     <!--<xacro:include filename="$(find jetrover_description)/urdf/gripper.transmission.xacro"/> ROS1 framework-->
 
     <!-- ROS 2 control interfaces -->
-    <xacro:include filename="$(find jetrover_description)/urdf/hiwonder_jetrover_ros2control.xacro"/>
+    <xacro:if value="$(arg enable_ros2_control)">
+        <xacro:include filename="$(find jetrover_description)/urdf/hiwonder_jetrover_ros2control.xacro"/>
+    </xacro:if>
     
     <!-- Gazebo physics and plugins -->
     <xacro:include filename="$(find jetrover_description)/urdf/hiwonder_jetrover_gazebo.xacro"/>
