@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<robot name="hiwonder" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Friction for the four Mecanum wheels -->
+
+  <gazebo reference="wheel_left_front_link">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+  </gazebo>
+
+  <gazebo reference="wheel_left_back_link">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+  </gazebo>
+
+  <gazebo reference="wheel_right_front_link">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+  </gazebo>
+
+  <gazebo reference="wheel_right_back_link">
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+  </gazebo>
+
+  <!-- ROS 2 Control plugin for Gazebo Harmonic -->
+
+  <gazebo>
+    <plugin
+      filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+
+      <parameters> $(find jetrover_description)/config/controllers.yaml </parameters>
+
+    </plugin>
+  </gazebo>
+
+</robot>

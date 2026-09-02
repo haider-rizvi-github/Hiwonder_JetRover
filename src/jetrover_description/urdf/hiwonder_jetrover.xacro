@@ -34,7 +34,14 @@
     <xacro:include filename="$(find jetrover_description)/urdf/common.urdf.xacro"/>
     <xacro:include filename="$(find jetrover_description)/urdf/connect.urdf.xacro"/>
     <xacro:include filename="$(find jetrover_description)/urdf/arm.urdf.xacro"/>
-    <xacro:include filename="$(find jetrover_description)/urdf/arm.transmission.xacro"/>
     <xacro:include filename="$(find jetrover_description)/urdf/gripper.urdf.xacro"/>
-    <xacro:include filename="$(find jetrover_description)/urdf/gripper.transmission.xacro"/>
+    <!-- <xacro:include filename="$(find jetrover_description)/urdf/arm.transmission.xacro"/> ROS1 framework-->
+    <!--<xacro:include filename="$(find jetrover_description)/urdf/gripper.transmission.xacro"/> ROS1 framework-->
+
+    <!-- ROS 2 control interfaces -->
+    <xacro:include filename="$(find jetrover_description)/urdf/hiwonder_jetrover_ros2control.xacro"/>
+    
+    <!-- Gazebo physics and plugins -->
+    <xacro:include filename="$(find jetrover_description)/urdf/hiwonder_jetrover_gazebo.xacro"/>
+
 </robot>
