@@ -2,7 +2,7 @@
 <robot name="hiwonder" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <!-- change default to True to enable ROS2 control : Using it false to check if gazebo is working correctly -->
-    <xacro:arg name="enable_ros2_control" default="false"/>
+    <xacro:arg name="enable_ros2_control" default="True"/>
 
     <xacro:property name="lidar"        value="$(env LIDAR_TYPE)"/>
     <xacro:property name="machine"      value="$(env MACHINE_TYPE)"/>
