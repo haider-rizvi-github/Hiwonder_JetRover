@@ -96,7 +96,7 @@
         filename="libgz_ros2_control-system.so"
         name="gz_ros2_control::GazeboSimROS2ControlPlugin">
         <parameters>
-          $(find jetrover_description)/config/controllers.yaml
+          $(find jetrover_controller)/config/controller.yaml
         </parameters>
       </plugin>
     </gazebo>

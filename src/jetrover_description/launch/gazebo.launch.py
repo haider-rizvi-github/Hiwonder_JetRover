@@ -29,6 +29,8 @@ def generate_launch_description():
     model = LaunchConfiguration("model")
     machine_type = LaunchConfiguration("machine_type")
     lidar_type = LaunchConfiguration("lidar_type")
+    enable_ros2_control = LaunchConfiguration("enable_ros2_control")
+    enable_gazebo = LaunchConfiguration("enable_gazebo")
 
     model_arg = DeclareLaunchArgument(
         "model",
@@ -54,6 +56,18 @@ def generate_launch_description():
         description="LiDAR type",
     )
 
+    enable_ros2_control_arg = DeclareLaunchArgument(
+    "enable_ros2_control",
+    default_value="true",
+    description="Enable ros2_control in Gazebo",
+)
+
+    enable_gazebo_arg = DeclareLaunchArgument(
+        "enable_gazebo",
+        default_value="true",
+        description="Enable Gazebo plugins and physics tags",
+    )
+
     set_machine_type = SetEnvironmentVariable(
         name="MACHINE_TYPE",
         value=machine_type,
@@ -71,15 +85,20 @@ def generate_launch_description():
     )
 
     robot_description = ParameterValue(
-        Command(
-            [
-                FindExecutable(name="xacro"),
-                " ",
-                model,
-            ]
-        ),
-        value_type=str,
+    Command(
+        [
+            FindExecutable(name="xacro"),
+            " ",
+            model,
+            " enable_ros2_control:=",
+            enable_ros2_control,
+            " enable_gazebo:=",
+            enable_gazebo,
+        ]
+    ),
+    value_type=str,
     )
+    
 
     robot_state_publisher = Node(
         package="robot_state_publisher",
@@ -137,6 +156,8 @@ def generate_launch_description():
             model_arg,
             machine_type_arg,
             lidar_type_arg,
+            enable_ros2_control_arg,
+            enable_gazebo_arg,
             set_machine_type,
             set_lidar_type,
             set_gz_resource_path,
