@@ -13,7 +13,7 @@ controller_manager:
       type: joint_trajectory_controller/JointTrajectoryController
 
     gripper_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
+      type: position_controllers/JointGroupPositionController
 
 
 mecanum_drive_controller:
@@ -63,12 +63,4 @@ gripper_controller:
     joints:
       - r_joint
 
-    command_interfaces:
-      - position
-
-    state_interfaces:
-      - position
-      - velocity
-
-    allow_partial_joints_goal: false
-    action_monitor_rate: 20.0
+    interface_name: position

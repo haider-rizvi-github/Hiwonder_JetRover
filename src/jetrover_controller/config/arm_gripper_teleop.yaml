@@ -1,0 +1,50 @@
+arm_gripper_teleop:
+  ros__parameters:
+    arm_action_name: /arm_controller/follow_joint_trajectory
+    gripper_action_name: /gripper_controller/follow_joint_trajectory
+
+    arm_joints:
+      - joint1
+      - joint2
+      - joint3
+      - joint4
+      - joint5
+
+    gripper_joint: r_joint
+
+    # Hold this button to control the arm
+    arm_mode_button: 4
+
+    # Joint selection buttons
+    joint_select_buttons:
+      joint1: 0
+      joint2: 1
+      joint3: 2
+      joint4: 3
+      joint5: 6
+
+    # Right-stick vertical axis
+    arm_axis: 4
+
+    # D-pad vertical axis
+    gripper_axis: 7
+
+    arm_step: 0.02
+    gripper_step: 0.02
+
+    arm_min:
+      - -2.09
+      - -2.09
+      - -2.09
+      - -2.09
+      - -2.09
+
+    arm_max:
+      - 2.09
+      - 2.09
+      - 2.09
+      - 2.09
+      - 2.09
+
+    gripper_min: -0.6
+    gripper_max: 0.6
